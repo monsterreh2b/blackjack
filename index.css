@@ -9,6 +9,7 @@ body {
 
 h1 {
     color: goldenrod;
+    font-size: 49pt;
 }
 
 #message-el {
@@ -24,6 +25,7 @@ button#newGame, button#hitMe, button#refresh, button#stay {
     width: 175px;
     padding-top: 5px;
     padding-bottom: 5px;
+    font-size: 23pt
 }
 
 button#hitMe {
@@ -35,5 +37,5 @@ button#hitMe {
 }
 
 p.displaySide {
-    font-size: 24pt;
+    font-size: 40pt;
 }
