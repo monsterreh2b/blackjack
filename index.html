@@ -1,29 +1,37 @@
 ﻿<html>
     <head><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="index.css">
     </head>
 <body>
-    <h1>Blackjack</h1>
-    <p class="displaySide" id="message-el">Play a round? Press Start Game</p>
-    <button type="button" class="starGame" id="newGame">Start Game</button>
-    <p class="displaySide" id="cards" style="margin-top:20px;">Cards Dealt: </p>
-    <p class="displaySide">Sum: <span id="displaySum"></span></p>
+    <div class="container">
+        <div class="row">
 
-    <p class="house displaySide hideBtn">House: <span id="house"></span></p><p class="verdict displaySide hideBtn">Result: </p><p class="renderWin displaySide hideBtn">😀</p>
-    <p class="renderLose displaySide hideBtn">😪</p>
-    <p class="renderTie displaySide hideBtn">😐</p><audio class="" id="audio">
-        <source src="cha-ching-7053.mp3" type="audio/mpeg">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h1>Blackjack</h1>
+                <p class="displaySide" id="message-el">Play a round? Press Start Game</p>
+                <button type="button" class="starGame" id="newGame">Start Game</button>
+                <p class="displaySide" id="cards" style="margin-top:20px;">Cards Dealt: </p>
+                <p class="displaySide">Sum: <span id="displaySum"></span></p>
 
-    </audio><audio class="" id="audioSad">
-        <source src="ooh-4-82986.mp3" type="audio/mpeg">
+                <p class="house displaySide hideBtn">House: <span id="house"></span></p><p class="verdict displaySide hideBtn">Result: </p><p class="renderWin displaySide hideBtn">😀</p>
+                <p class="renderLose displaySide hideBtn">😪</p>
+                <p class="renderTie displaySide hideBtn">😐</p><audio class="" id="audio">
+                    <source src="cha-ching-7053.mp3" type="audio/mpeg">
 
-    </audio><audio class="" id="audioMeh">
-        <source src="ending-was-meh-42263.mp3" type="audio/mpeg">
+                </audio><audio class="" id="audioSad">
+                    <source src="ooh-4-82986.mp3" type="audio/mpeg">
 
-    </audio><div style="text-align:center;"><button type="button" class="hitMo hideBtn" id="hitMe">Hit Me!</button><br><button type="button" class="stay hideBtn" id="stay" style="margin-top:20px;">Stay</button><br><button type="button" id="refresh" class="again hideBtn" style="margin-top:20px;">Play Again</button></div>
+                </audio><audio class="" id="audioMeh">
+                    <source src="ending-was-meh-42263.mp3" type="audio/mpeg">
 
+                </audio><div style="text-align:center;"><button type="button" class="hitMo hideBtn" id="hitMe">Hit Me!</button><br><button type="button" class="stay hideBtn" id="stay" style="margin-top:20px;">Stay</button><br><button type="button" id="refresh" class="again hideBtn" style="margin-top:20px;">Play Again</button></div>
+            </div>
+        </div>
+    </div>
 
     <script src="index.js"></script>
+
 
 
 
