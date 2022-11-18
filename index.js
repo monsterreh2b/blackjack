@@ -50,9 +50,14 @@ console.log(renderLose);
 let renderTie = document.querySelector(".renderTie");
 console.log(renderTie);
 
-
 let displaySum = document.getElementById("displaySum");
 console.log(displaySum);
+
+let messageElla = document.querySelector(".messageElla");
+console.log(messageElla);
+
+
+
 
 let firstCard = getRandomCard();
 let secondCard = getRandomCard();
@@ -183,6 +188,7 @@ function renderHouse() {
     houseNum = getRandomHouse(14, 21);
     house.classList.remove("hideBtn");
     hitMo.classList.add("hideBtn");
+    messageElla.classList.add("hideBtn");
     house.innerHTML = "House: " + houseNum;
     verdict.classList.remove("hideBtn");
     if (houseNum > sum) {

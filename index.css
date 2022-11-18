@@ -39,3 +39,9 @@ button#hitMe {
 p.displaySide {
     font-size: 40pt;
 }
+
+.flexy {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
