@@ -63,6 +63,7 @@ let firstCard = getRandomCard();
 let secondCard = getRandomCard();
 let sum = firstCard + secondCard;
 let houseNum;
+let grandGrandTotal = 0;
 
 
 
@@ -196,6 +197,7 @@ function renderHouse() {
         verdict.innerHTML = "Result: " + verdictMsg;
         renderLose.classList.remove("hideBtn");
         again.classList.remove("hideBtn");
+        
         audioSad.play();
 
     }
@@ -205,6 +207,7 @@ function renderHouse() {
     
         renderWin.classList.remove("hideBtn");
         again.classList.remove("hideBtn");
+        
         audio.play();
     }
     else if (houseNum === sum) {
@@ -212,6 +215,7 @@ function renderHouse() {
         verdict.innerHTML = "Result: " + verdictMsg;
         renderTie.classList.remove("hideBtn");
         again.classList.remove("hideBtn");
+        
         audioMeh.play();
     }
     stay.classList.add("hideBtn");
@@ -219,6 +223,7 @@ function renderHouse() {
     again.classList.remove("hideBtn");
 
 }
+
 
 
 
