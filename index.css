@@ -8,8 +8,9 @@ body {
 }
 
 h1 {
-    color: goldenrod;
-    font-size: 49pt;
+    color: black;
+    font-size: 70pt;
+    font-family: Roboto;
 }
 
 #message-el {
@@ -19,13 +20,16 @@ h1 {
 
 
 button#newGame, button#hitMe, button#refresh, button#stay {
-    background-color: #daa325;
-    color: green;
+    background-color: #4b7556;
+    color: white;
     border-color: green;
-    width: 175px;
+    width: 295px;
     padding-top: 5px;
     padding-bottom: 5px;
-    font-size: 23pt
+    font-size: 23pt;
+    border-radius: 20px;
+    padding-right: 25px;
+    padding-left: 25px;
 }
 
 button#hitMe {
