@@ -53,6 +53,10 @@ console.log(renderTie);
 let displaySum = document.getElementById("displaySum");
 console.log(displaySum);
 
+const scorey = document.getElementById("scorey");
+
+let grandTotal = 0;
+
 let messageElla = document.querySelector(".messageElla");
 console.log(messageElla);
 
@@ -63,7 +67,7 @@ let firstCard = getRandomCard();
 let secondCard = getRandomCard();
 let sum = firstCard + secondCard;
 let houseNum;
-let grandGrandTotal = 0;
+
 
 
 
@@ -89,6 +93,7 @@ function startGame() {
     //hide the start game btn
     
     starGame.classList.add("hideBtn");
+    let counter = 0;
     if (sum != 21) {
         hitMo.classList.remove("hideBtn");
         stay.classList.remove("hideBtn");
@@ -133,6 +138,15 @@ function startGame() {
         again.classList.remove("hideBtn");
         stay.classList.add("hideBtn");
         audioSad.play();
+
+      
+        grandTotal = grandTotal - 100;
+        console.log(grandTotal);
+        localStorage.setItem('total', grandTotal);
+        counter = localStorage.getItem('total');
+        console.log(counter);
+        grandTotal = counter;
+        scorey.innerHTML = grandTotal;
     }
     /*console.log(message)*/
     
@@ -192,6 +206,8 @@ function renderHouse() {
     messageElla.classList.add("hideBtn");
     house.innerHTML = "House: " + houseNum;
     verdict.classList.remove("hideBtn");
+    let counter = 0;
+    let runningGrand;
     if (houseNum > sum) {
         verdictMsg = "You lost $100!";
         verdict.innerHTML = "Result: " + verdictMsg;
@@ -199,7 +215,23 @@ function renderHouse() {
         again.classList.remove("hideBtn");
         
         audioSad.play();
-
+      
+        if (localStorage.getItem('grandTotal')) {//if local storage filled with grandTotal
+            runningGrand = JSON.parse(localStorage.getItem('grandTotal'));
+            runningGrand = runningGrand - 100;
+            localStorage.setItem('grandTotal', JSON.stringify(runningGrand));
+            scorey.innerHTML = JSON.parse(localStorage.getItem('grandTotal'));
+        }
+        else { //local storage is empty
+            counter = -100;
+            localStorage.setItem('total', JSON.stringify(counter));
+            grandTotal = JSON.parse(localStorage.getItem('total'));
+            console.log(grandTotal);
+            localStorage.setItem('grandTotal', JSON.stringify(grandTotal)); // set LS grandTotal for the first time
+            scorey.innerHTML = JSON.parse(localStorage.getItem('grandTotal'));
+        }
+        
+        
     }
     else if (houseNum < sum) {
         verdictMsg = "You won $100!";
@@ -209,6 +241,15 @@ function renderHouse() {
         again.classList.remove("hideBtn");
         
         audio.play();
+
+        grandTotal = grandTotal + 100;
+        localStorage.setItem('total', JSON.stringify(grandTotal));
+        counter = JSON.parse(localStorage.getItem('total'));
+        console.log(counter);
+        grandTotal = grandTotal + counter;
+
+        localStorage.setItem('total', JSON.stringify(grandTotal));
+        scorey.innerHTML = JSON.parse(localStorage.getItem('total'));
     }
     else if (houseNum === sum) {
         verdictMsg = "Its a tie!";
@@ -226,6 +267,14 @@ function renderHouse() {
 
 
 
+if (localStorage.getItem('total')) {
+    scorey.innerHTML = localStorage.getItem('total');
+}
+else {
+    scorey.innerHTML = grandTotal;
+}
+
+//localStorage.clear();
 
 newGame.onclick = startGame;
 hitMe.onclick = newCard;
