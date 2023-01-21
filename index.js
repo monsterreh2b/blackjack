@@ -281,14 +281,14 @@ function renderHouse() {
         }
     }
     else if (houseNum === sum) {
-        verdictMsg = "Its a tie! Here's $50 back, ok?";
+        verdictMsg = "Its a tie! Try again, ok?";
         verdict.innerHTML = "Result: " + verdictMsg;
         renderTie.classList.remove("hideBtn");
         again.classList.remove("hideBtn");
         
         audioMeh.play();
 
-        if (localStorage.getItem('grandTotal')) {//if local storage filled with grandTotal
+        /*if (localStorage.getItem('grandTotal')) {//if local storage filled with grandTotal
             runningGrand = JSON.parse(localStorage.getItem('grandTotal'));
             runningGrand = runningGrand + 50;
             localStorage.setItem('grandTotal', JSON.stringify(runningGrand));
@@ -301,7 +301,7 @@ function renderHouse() {
             console.log(grandTotal);
             localStorage.setItem('grandTotal', JSON.stringify(grandTotal)); // set LS grandTotal for the first time
             scorey.innerHTML = JSON.parse(localStorage.getItem('grandTotal'));
-        }
+        }*/
     }
     stay.classList.add("hideBtn");
     audioRender.classList.remove("hideBtn");
