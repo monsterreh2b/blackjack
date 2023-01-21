@@ -206,8 +206,8 @@ function renderHouse() {
     messageElla.classList.add("hideBtn");
     house.innerHTML = "House: " + houseNum;
     verdict.classList.remove("hideBtn");
-    let counter = 0;
-    let runningGrand;
+    let counter = 0; //if LS is empty, counter var is the result of the game (win/lose 100)
+    let runningGrand; //if LS has grandTotal, runningGrand inherits grandTotal's value, adds the result of the game (win/lose 100), then sets grandTotal to value to runningGrand  
     if (houseNum > sum) {
         verdictMsg = "You lost $100!";
         verdict.innerHTML = "Result: " + verdictMsg;
@@ -267,10 +267,10 @@ function renderHouse() {
 
 
 
-if (localStorage.getItem('total')) {
-    scorey.innerHTML = localStorage.getItem('total');
+if (localStorage.getItem('total')) { //if local storage filled with grandTotal
+    scorey.innerHTML = JSON.parse(localStorage.getItem('grandTotal'));
 }
-else {
+else { //local storage is empty
     scorey.innerHTML = grandTotal;
 }
 
