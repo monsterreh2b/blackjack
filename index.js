@@ -93,7 +93,8 @@ function startGame() {
     //hide the start game btn
     
     starGame.classList.add("hideBtn");
-    let counter = 0;
+    let counter = 0; //if LS is empty, counter var is the result of the game (win/lose 100)
+    let runningGrand; //if LS has grandTotal, runningGrand inherits grandTotal's value, adds the result of the game (win/lose 100), then sets grandTotal to value to runningGrand  
     if (sum != 21) {
         hitMo.classList.remove("hideBtn");
         stay.classList.remove("hideBtn");
@@ -124,6 +125,21 @@ function startGame() {
         stay.classList.add("hideBtn");
         renderWin.classList.remove("hideBtn");
         audio.play();
+
+        if (localStorage.getItem('grandTotal')) {//if local storage filled with grandTotal
+            runningGrand = JSON.parse(localStorage.getItem('grandTotal'));
+            runningGrand = runningGrand + 100;
+            localStorage.setItem('grandTotal', JSON.stringify(runningGrand));
+            scorey.innerHTML = JSON.parse(localStorage.getItem('grandTotal'));
+        }
+        else { //local storage is empty
+            counter = 100;
+            localStorage.setItem('total', JSON.stringify(counter));
+            grandTotal = JSON.parse(localStorage.getItem('total'));
+            console.log(grandTotal);
+            localStorage.setItem('grandTotal', JSON.stringify(grandTotal)); // set LS grandTotal for the first time
+            scorey.innerHTML = JSON.parse(localStorage.getItem('grandTotal'));
+        }
     } else {
         message = "You're out of the game!"
         isAlive = false;
@@ -140,13 +156,20 @@ function startGame() {
         audioSad.play();
 
       
-        grandTotal = grandTotal - 100;
-        console.log(grandTotal);
-        localStorage.setItem('total', grandTotal);
-        counter = localStorage.getItem('total');
-        console.log(counter);
-        grandTotal = counter;
-        scorey.innerHTML = grandTotal;
+        if (localStorage.getItem('grandTotal')) {//if local storage filled with grandTotal
+            runningGrand = JSON.parse(localStorage.getItem('grandTotal'));
+            runningGrand = runningGrand - 100;
+            localStorage.setItem('grandTotal', JSON.stringify(runningGrand));
+            scorey.innerHTML = JSON.parse(localStorage.getItem('grandTotal'));
+        }
+        else { //local storage is empty
+            counter = -100;
+            localStorage.setItem('total', JSON.stringify(counter));
+            grandTotal = JSON.parse(localStorage.getItem('total'));
+            console.log(grandTotal);
+            localStorage.setItem('grandTotal', JSON.stringify(grandTotal)); // set LS grandTotal for the first time
+            scorey.innerHTML = JSON.parse(localStorage.getItem('grandTotal'));
+        }
     }
     /*console.log(message)*/
     
@@ -200,7 +223,7 @@ function getRandomHouse(min, max) {
 }
 
 function renderHouse() {
-    houseNum = getRandomHouse(14, 21);
+    houseNum = getRandomHouse(12, 21); //range of values for the house, randomly
     house.classList.remove("hideBtn");
     hitMo.classList.add("hideBtn");
     messageElla.classList.add("hideBtn");
@@ -242,22 +265,43 @@ function renderHouse() {
         
         audio.play();
 
-        grandTotal = grandTotal + 100;
-        localStorage.setItem('total', JSON.stringify(grandTotal));
-        counter = JSON.parse(localStorage.getItem('total'));
-        console.log(counter);
-        grandTotal = grandTotal + counter;
-
-        localStorage.setItem('total', JSON.stringify(grandTotal));
-        scorey.innerHTML = JSON.parse(localStorage.getItem('total'));
+        if (localStorage.getItem('grandTotal')) {//if local storage filled with grandTotal
+            runningGrand = JSON.parse(localStorage.getItem('grandTotal'));
+            runningGrand = runningGrand + 100;
+            localStorage.setItem('grandTotal', JSON.stringify(runningGrand));
+            scorey.innerHTML = JSON.parse(localStorage.getItem('grandTotal'));
+        }
+        else { //local storage is empty
+            counter = 100;
+            localStorage.setItem('total', JSON.stringify(counter));
+            grandTotal = JSON.parse(localStorage.getItem('total'));
+            console.log(grandTotal);
+            localStorage.setItem('grandTotal', JSON.stringify(grandTotal)); // set LS grandTotal for the first time
+            scorey.innerHTML = JSON.parse(localStorage.getItem('grandTotal'));
+        }
     }
     else if (houseNum === sum) {
-        verdictMsg = "Its a tie!";
+        verdictMsg = "Its a tie! Here's $50 back, ok?";
         verdict.innerHTML = "Result: " + verdictMsg;
         renderTie.classList.remove("hideBtn");
         again.classList.remove("hideBtn");
         
         audioMeh.play();
+
+        if (localStorage.getItem('grandTotal')) {//if local storage filled with grandTotal
+            runningGrand = JSON.parse(localStorage.getItem('grandTotal'));
+            runningGrand = runningGrand + 50;
+            localStorage.setItem('grandTotal', JSON.stringify(runningGrand));
+            scorey.innerHTML = JSON.parse(localStorage.getItem('grandTotal'));
+        }
+        else { //local storage is empty
+            counter = 50;
+            localStorage.setItem('total', JSON.stringify(counter));
+            grandTotal = JSON.parse(localStorage.getItem('total'));
+            console.log(grandTotal);
+            localStorage.setItem('grandTotal', JSON.stringify(grandTotal)); // set LS grandTotal for the first time
+            scorey.innerHTML = JSON.parse(localStorage.getItem('grandTotal'));
+        }
     }
     stay.classList.add("hideBtn");
     audioRender.classList.remove("hideBtn");
